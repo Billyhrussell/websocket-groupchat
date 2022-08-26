@@ -61,6 +61,14 @@ class ChatUser {
       text: text,
     });
   }
+  /** Handle a joke: broadcast to user that requested joke */
+  handleJoke(){
+    this.send(JSON.stringify({
+      name: "computer",
+      type: "chat",
+      text: "This is a joke",
+    }))
+  }
 
   /** Handle messages from client:
    *
@@ -74,9 +82,10 @@ class ChatUser {
 
   handleMessage(jsonData) {
     let msg = JSON.parse(jsonData);
-
+    console.log("MSG INSIDE HANDLEMSG: ", msg);
     if (msg.type === "join") this.handleJoin(msg.name);
     else if (msg.type === "chat") this.handleChat(msg.text);
+    else if(msg.type === "get-joke") this.handleJoke();
     else throw new Error(`bad message: ${msg.type}`);
   }
 

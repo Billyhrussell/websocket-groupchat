@@ -1,11 +1,11 @@
 {
   "name": "groupchat",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "docs": "jsdoc -d docs ."
+    "docs": "jsdoc -d docs .",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
@@ -17,5 +17,18 @@
   },
   "devDependencies": {
     "jsdoc": "^3.6.7"
-  }
+  },
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Billyhrussell/websocket-groupchat.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/Billyhrussell/websocket-groupchat/issues"
+  },
+  "homepage": "https://github.com/Billyhrussell/websocket-groupchat#readme",
+  "description": ""
 }
