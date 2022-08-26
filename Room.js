@@ -68,9 +68,6 @@ class Room {
     }
   }
 
-  userOnly(member, data){
-    member.send(JSON.stringify(data));
-  }
 }
 
 module.exports = Room;

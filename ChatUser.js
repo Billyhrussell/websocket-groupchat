@@ -4,6 +4,7 @@
 
 // Room is an abstraction of a chat channel
 const Room = require("./Room");
+const axios = require("axios");
 
 /** ChatUser is a individual connection from client -> server to chat. */
 
@@ -62,11 +63,18 @@ class ChatUser {
     });
   }
   /** Handle a joke: broadcast to user that requested joke */
-  handleJoke(){
+  async handleJoke(){
+    let text;
+    try{
+      text = await axios.get("https://icanhazdadjoke.com/",
+        {headers: { "Accept": "application/json", "User-Agent": "websocket groupchat exercise" }}); 
+    } catch(err){
+      console.log("error: ", err);
+    }
     this.send(JSON.stringify({
       name: "computer",
       type: "chat",
-      text: "This is a joke",
+      text: text.data.joke,
     }))
   }
 
